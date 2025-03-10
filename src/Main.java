@@ -5,13 +5,15 @@ public class Main {
 
         System.out.println("custom class loader test");
 
-        CustomLoader customLoader = new CustomLoader(Main.class.getClassLoader());
+        String classPath = "D:/uni/course/couse_assing3_custom_classes";
 
-        Class<?> customClass = customLoader.loadClass("classes.Custom1");
+        CustomLoader customLoader = new CustomLoader(Main.class.getClassLoader(), classPath);
+
+        Class<?> customClass = customLoader.findClass("Custom1");
 
         System.out.println("Loaded class name: " + customClass.getName());
 
-        Object customClassInstance = customClass.newInstance();
+        Object customClassInstance = customClass.getDeclaredConstructor().newInstance();
 
         customClass.getMethod("printMessage").invoke(customClassInstance);
     }
