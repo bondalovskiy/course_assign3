@@ -14,7 +14,7 @@ public class CustomLoader extends ClassLoader {
 
     @Override
     public Class<?> findClass(String name) {
-        System.out.println("Loading class " + name);
+        System.out.println("Loading class " + name );
 
         try {
             String filePath = classPath + "/" + name.replace(".", "/") + ".class";
